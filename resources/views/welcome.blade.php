@@ -25,9 +25,13 @@
                 margin-top: 320px;
                 font-size: 55px;
             }
+            a {
+                color: white;
+            }
         </style>
     </head>
     <body class="antialiased">
         <h2>l2tops.fun</h2>
+        <a href="{{ asset('login') }}">Войти</a>
     </body>
 </html>
