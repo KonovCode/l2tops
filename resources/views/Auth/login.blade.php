@@ -2,7 +2,9 @@
 
 @section('auth-view')
 
-<form action="" class="p-4">
+<form action="{{route('login-user')}}" class="p-4" method="POST">
+
+    @csrf
 
     <h3 class="text-blue-500 text-center font-bold">Регистрация аккаунта</h3>
 
@@ -18,8 +20,6 @@
             <x-link href="register">Зарегистрировать аккаунт ?</x-link>
             <x-link href="forgot-password">Cброс пароля</x-link>
         </div>
-
-        
 
         <x-button color="blue">Войти</x-button>
 

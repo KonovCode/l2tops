@@ -12,7 +12,7 @@
 
     <x-input type="password" name="password" id="password">Пароль</x-input>
 
-    <x-input type="password" name="confirm-password" id="confirm-password">Подтверждение пароля</x-input>
+    <x-input type="password" name="password_confirmation" id="password_confirmation">Подтверждение пароля</x-input>
 
     <section class="flex justify-evenly items-center">
 
