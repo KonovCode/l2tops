@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPassword;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPassword;
@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return redirect('/');
+    return redirect()->route('dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -46,9 +48,16 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/forgot-password', [ForgotPassword::class, 'index'])->name('forgot-password');
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendReset'])->name('password-email');
 
-Route::get('/reset-password', [ResetPassword::class, 'index'])->name('reset-password');
+// Route::get('/reset-password/{token}', function ($token) {
+//     return view('Auth.reset-password', ['token' => $token]);
+// })->middleware('guest')->name('password.reset');
+
+Route::get('/reset-password', [ResetPassword::class, 'index'])->name('password.reset');
+
+Route::post('/reset-password', [ResetPassword::class, 'reset'])->name('password.update');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 

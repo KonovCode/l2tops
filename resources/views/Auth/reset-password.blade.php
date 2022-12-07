@@ -2,13 +2,17 @@
 
 @section('auth-view')
 
-<form action="" class="p-4">
+<form action="{{route('password.update')}}" class="p-4" method="POST">
+
+    @csrf
 
     <h3 class="text-blue-500 text-center font-bold">Сброс пароля</h3>
 
     <hr class="my-3">
 
-    <x-input type="email" name="email" id="email">Email</x-input>
+    <input type="hidden" name="token" value="{{ $request->token }}">
+
+    <x-input type="email" name="email" id="email" value="{{$request->email ? $request->email : ''}}"> Email</x-input>
 
     <x-input type="password" name="password" id="password">Пароль</x-input>
 

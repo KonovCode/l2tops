@@ -8,6 +8,9 @@
 
     <h3 class="text-blue-500 text-center font-bold">Регистрация аккаунта</h3>
 
+    @if(session('status'))
+        <p>Пароль успешно изменен!</p>
+    @endif
     <hr class="my-3">
 
     <x-input type="email" name="email" id="email">Логин</x-input>
