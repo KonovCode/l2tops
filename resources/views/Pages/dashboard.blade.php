@@ -4,11 +4,13 @@
 
 <div>
 
-   <x-navbar-dashboard>
-    Nav-items
-   </x-navbar-dashboard>
+    <x-dashboard-layout></x-dashboard-layout>
 
-    <h2> Dashboard page </h2>
+    <div class="border border-gray-700 my-2">
+
+        @yield('dashboard-view')
+
+    </div>
 
 </div>
 

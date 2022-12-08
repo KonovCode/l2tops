@@ -6,7 +6,7 @@
 
         <h3 class="text-blue-500 text-center font-bold">Регистрация аккаунта</h3>
 
-        <hr class="my-3">
+        <hr class="my-4">
 
         <div class="mb-4 text-sm text-white">
             Спасибо за регистрацию! Прежде чем начать, не могли бы вы подтвердить свой адрес электронной почты, перейдя по ссылке, которую мы только что отправили вам по электронной почте? Если вы не получили письмо, мы с радостью вышлем вам другое.
@@ -15,6 +15,12 @@
         <!-- <div class="mb-4 font-medium text-sm text-green-600">
             На адрес электронной почты, который вы указали при регистрации, была отправлена новая ссылка для подтверждения.
         </div> -->
+
+        @if($errors->any())
+            @foreach($errors->all() as $e_message)
+                <x-error-message>{{$e_message}}</x-error-message>
+            @endforeach
+        @endif
         
         <form action="{{route('verification.send')}}" method="POST">
 

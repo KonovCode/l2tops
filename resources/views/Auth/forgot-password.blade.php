@@ -9,10 +9,12 @@
     <h3 class="text-blue-500 text-center font-bold">Сброс пароля</h3>
 
     @if(session('status')) 
-        <p>Успешно !</p>
+        <x-success-message>
+            Сылка на сброс пароля было успешно отправлена!
+        </x-success-message>
     @endif
 
-    <hr class="my-3">
+    <hr class="my-3 lg:my-4">
 
     <div class="mb-4 text-sm text-white">
             Забыли свой пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы отправим вам ссылку для сброса пароля, которая позволит вам выбрать новый.
@@ -20,9 +22,11 @@
 
     <x-input type="email" name="email" id="email">Email</x-input>
 
-    @error('login')
-            <p>ошибка логин!</p>
-        @enderror
+    @if($errors->any())
+    @foreach($errors->all() as $e_message)
+            <x-error-message>{{$e_message}}</x-error-message>
+        @endforeach
+    @endif
 
     <section class="flex justify-evenly items-center">
 

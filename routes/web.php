@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminDashboard\AdminAddProjectController;
+use App\Http\Controllers\AdminDashboard\AdminBannerController;
+use App\Http\Controllers\AdminDashboard\AdminGeneralPageController;
+use App\Http\Controllers\AdminDashboard\AdminPriceController;
+use App\Http\Controllers\AdminDashboard\AdminProjectsController;
+use App\Http\Controllers\AdminDashboard\AdminUsersController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -25,8 +31,15 @@ use Illuminate\Http\Request;
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+    
+    Route::get('/add-project', [AdminAddProjectController::class, 'index'])->name('add.project');
+    Route::resource('banners', AdminBannerController::class);
+    Route::resource('projects', AdminProjectsController::class);
+    Route::resource('users', AdminUsersController::class);
+    Route::resource('prices', AdminPriceController::class);
+
 });
 
 Route::get('/email/verify', function () {
@@ -49,11 +62,8 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendReset'])->name('password-email');
 
-// Route::get('/reset-password/{token}', function ($token) {
-//     return view('Auth.reset-password', ['token' => $token]);
-// })->middleware('guest')->name('password.reset');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendReset'])->name('password-email');
 
 Route::get('/reset-password', [ResetPassword::class, 'index'])->name('password.reset');
 
