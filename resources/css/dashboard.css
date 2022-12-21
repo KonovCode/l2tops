@@ -1,0 +1,59 @@
+
+#banner_list {
+    display: flex;
+    min-height: 325px !important;
+    max-height: 325px !important;
+}
+
+.banner {
+    flex: 1;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    margin: 2px 5px;
+    border-radius: 1rem;
+    position: relative;
+    transition: all 700ms ease-in-out;
+    cursor: pointer;
+    min-height: 45px;
+    /* max-width: 120px;
+    min-width: 40px; */
+    background-color: rgb(31 41 55) !important;
+}
+
+.banner.active {
+    flex: 10;
+    max-width: 750px;
+    min-height: 300px;
+}
+
+.default_banner {
+    flex: 10;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 5px;
+    border-radius: 1rem;
+    position: relative;
+    transition: all 700ms ease-in-out;
+    cursor: pointer;
+    max-width: 750px;
+    min-width: 40px;
+    background-color: rgb(31 41 55);
+}
+
+.banner .banner_btn {
+    position: absolute;
+    bottom: 30px;
+    opacity: 0;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+
+.banner.active .banner_btn {
+    opacity: 1 !important;
+    transition: opacity 0.3s ease-in 0.4s;
+}

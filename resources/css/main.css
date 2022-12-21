@@ -1,0 +1,105 @@
+/* desktop slider css */
+
+#slides_list {
+    display: flex;
+    width: 100%;
+    min-height: 325px !important;
+    max-height: 325px !important;
+}
+
+.slide {
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 5px;
+    border-radius: 1rem;
+    position: relative;
+    transition: all 700ms ease-in-out;
+    cursor: pointer;
+    max-width: 120px;
+    min-width: 40px;
+    background-color: rgb(31 41 55);
+}
+
+.slide.active {
+    flex: 10;
+    max-width: 750px;
+}
+
+.slide .slide_href {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.slide.active .slide_href {
+    opacity: 1 !important;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/*---------------------- style status project -------------------------*/
+
+.top {
+    background: linear-gradient(90deg, rgba(2, 1, 71, 1) 0%, rgba(180, 0, 6, 1) 62%);
+    border: 1px solid darkgray;
+    color: white;
+    font-weight: bold;
+    min-height: 40px !important;
+}
+
+.top span {
+    min-width: 40px !important;
+    height: 50px;
+    max-height: 35px;
+    align-self: end;
+}
+
+.top h6 {
+    color: gold
+}
+
+.vip {
+    color: rgb(200, 147, 1);
+    background-color: antiquewhite;
+    font-weight: bold;
+    min-height: 40px !important;
+}
+
+.vip span {
+    background: rgb(225, 191, 0);
+    color: white;
+    min-width: 40px !important;
+}
+
+.premium {
+    background-color: whitesmoke;
+    border: 1px solid darkgray;
+    animation: flame 3s linear 1s infinite running;
+    font-weight: bold;
+    min-height: 40px !important;
+}
+
+.premium span {
+    color: firebrick;
+    min-width: 40px !important;
+    height: 50px;
+    max-height: 35px;
+    align-self: end;
+    position: relative;
+}
+
+.default {
+    border: 1px solid grey;
+}
+
+@media screen and (max-width: 400px){
+    .project_params {
+        font-size: 9px !important;
+    }
+}

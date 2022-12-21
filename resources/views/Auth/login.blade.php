@@ -26,11 +26,6 @@
 
     <section class="flex justify-evenly items-center">
 
-        <div class="flex flex-col justify-center">
-            <x-link href="register">Зарегистрировать аккаунт ?</x-link>
-            <x-link href="forgot-password">Cброс пароля</x-link>
-        </div>
-
         <x-button color="blue">Войти</x-button>
 
     </section>
