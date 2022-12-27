@@ -1,5 +1,5 @@
     
-<ul class="my-2 w-full px-0.5 sm:px-2">
+<ul class="my-1.5 w-full px-0.5 sm:px-2">
     <li class="{{$status}} {{$premium}} grid grid-cols-12 border-gray-500 rounded h-10 p-0 sm:p-0.5 relative">
         <span
             class="grid project_params font-medium md:font-bold col-span-1 rounded h-full w-full text-xs sm:text-lg flex items-center justify-center">

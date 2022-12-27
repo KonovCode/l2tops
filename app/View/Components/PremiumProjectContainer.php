@@ -4,17 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class button extends Component
+class PremiumProjectContainer extends Component
 {
-
+    public $icon;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($icon)
     {
-        //
+        $this->icon = $icon;
     }
 
     /**
@@ -24,6 +24,6 @@ class button extends Component
      */
     public function render()
     {
-        return view('components.button');
+        return view('components.premium-project-container');
     }
 }
