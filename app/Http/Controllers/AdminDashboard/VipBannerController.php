@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class VipBannerController extends Controller
 {
+    public function index() {
+        return view('Pages.AdminDashboard.banner-controll');
+    }
+
     public function add_banner(VipBannerRequest $request) 
     {
        $imageName = time().'.'.$request->img->extension();

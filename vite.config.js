@@ -12,7 +12,6 @@ export default defineConfig({
                 'resources/js/board.js',
                 'resources/css/alert.css',
                 'resources/css/main.css',
-                'resources/css/dashboard.css',
             ],
             refresh: true,
         }),

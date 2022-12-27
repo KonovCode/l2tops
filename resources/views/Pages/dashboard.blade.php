@@ -3,8 +3,6 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ Vite::asset('resources/css/alert.css') }}">
-<link rel="stylesheet" href="{{ Vite::asset('resources/css/dashboard.css') }}">
-
 
 <div>
 

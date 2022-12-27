@@ -8,21 +8,6 @@
 
         <x-header></x-header>
 
-        <div class="container mx-auto mt-3 p-1 border border-3 border-dark hidden md:block">
-            <!-- img-size 700x320 -->
-            <div id="slides_list">
-
-                <x-banner-slide class="active"></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-                <x-banner-slide></x-banner-slide>
-
-            </div>
-        </div>
-
         <x-sort-nav></x-sort-nav>
 
         <div class="flex flex-wrap">

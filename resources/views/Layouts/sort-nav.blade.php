@@ -1,4 +1,4 @@
-<div class="bg-gray-800 py-2 mt-3 flex justify-between px-2 md:px-3  items-center">
+<div class="bg-gray-800 py-2 flex justify-between px-2 md:px-3  items-center" style="margin-top: 300px">
         
         <section class="md:block hidden w-4/12">
             <h2 class="text-center text-white text-xl font-bold">Анонсы серверов</h2>

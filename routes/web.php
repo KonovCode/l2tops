@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminDashboard\AdminAddProjectController;
-use App\Http\Controllers\AdminDashboard\AdminBannerController;
 use App\Http\Controllers\AdminDashboard\AdminPriceController;
 use App\Http\Controllers\AdminDashboard\AdminProjectsController;
 use App\Http\Controllers\AdminDashboard\AdminUsersController;
@@ -41,14 +40,9 @@ Route::middleware('auth')->group(function () {
     
     Route::post('/save-project', [AdminAddProjectController::class, 'addProject'])->name('save.project');
 
+    Route::get('/banner-controll', [VipBannerController::class, 'index'])->name('banners.index');
     Route::post('/add-vip-banner', [VipBannerController::class, 'add_banner'])->name('add.vip.banner');
     Route::post('/delete-vip-banner/{id}', [VipBannerController::class, 'delete'])->name('delete.vip.banner');
-
-    Route::get('/banner-controll', [AdminBannerController::class, 'index'])->name('banners.index');
-    Route::post('/add-banner/{id}', [AdminBannerController::class, 'addBanner'])->name('add.banner');
-    Route::post('/delete-banner/{id}', [AdminBannerController::class, 'delete'])->name('delete.banner');
-    Route::post('/banner-publish/{id}', [AdminBannerController::class, 'publish'])->name('publish.banner');
-    Route::post('/hide-banner/{id}', [AdminBannerController::class, 'hide'])->name('hide.banner');
     
     Route::resource('projects', AdminProjectsController::class);
     Route::resource('users', AdminUsersController::class);
