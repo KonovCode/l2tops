@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\VipBanner;
 use Carbon\Carbon;
 
 
 class HomeController extends Controller
 {
     public function index() {
+
+        $banner = VipBanner::get()->first();
 
         $premium = Project::all()->where('premium', 1);
 
@@ -27,6 +30,7 @@ class HomeController extends Controller
         $previousSevenDays = Project::all()->where('date_open', '<', Carbon::now()->subDays(1)->toDateString())->where('date_open', '>=', Carbon::now()->subDays(8));
 
         return view('Pages.home', [
+            'banner' => $banner,
             'premium' => $premium,
             'today' => $today,
             'yesterday' => $yesterday,

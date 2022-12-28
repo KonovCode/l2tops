@@ -16,6 +16,7 @@ class VipBanner extends Model
         'img',
         'file_name',
         'link',
+        'publish',
         'buy_term',
         'buy_date',
     ];

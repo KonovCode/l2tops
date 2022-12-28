@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('img');
             $table->string('file_name');
             $table->string('link');
+            $table->integer('publish')->default(0);
             $table->integer('buy_term');
             $table->date('buy_date');
         });

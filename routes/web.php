@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/banner-controll', [VipBannerController::class, 'index'])->name('banners.index');
     Route::post('/add-vip-banner', [VipBannerController::class, 'add_banner'])->name('add.vip.banner');
     Route::post('/delete-vip-banner/{id}', [VipBannerController::class, 'delete'])->name('delete.vip.banner');
+    Route::post('/add-publish-banner/{id}', [VipBannerController::class, 'addPublish'])->name('add.publish.banner');
+    Route::post('/hide-publish-banner/{id}', [VipBannerController::class, 'hidePublish'])->name('hide.publish.banner');
     
     Route::resource('projects', AdminProjectsController::class);
     Route::resource('users', AdminUsersController::class);

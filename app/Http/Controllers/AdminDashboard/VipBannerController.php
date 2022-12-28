@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\Storage;
 class VipBannerController extends Controller
 {
     public function index() {
-        return view('Pages.AdminDashboard.banner-controll');
+
+        $banner = VipBanner::get()->first();
+
+        return view('Pages.AdminDashboard.banner-controll', ['banner' => $banner]);
     }
 
     public function add_banner(VipBannerRequest $request) 
@@ -32,6 +35,22 @@ class VipBannerController extends Controller
        Session::flash('message', 'Баннер был успешно загружен!');
 
        return back();
+    }
+
+    public function addPublish($id) {
+        VipBanner::findOrFail($id)->where('publish', 0)->update(['publish' => 1]);
+
+        Session::flash('message', 'Баннер успешно опубликован');
+
+        return back();
+    }
+
+    public function hidePublish($id) {
+        VipBanner::findOrFail($id)->where('publish', 1)->update(['publish' => 0]);
+
+        Session::flash('message', 'Вы убрали баннер с главной страницы');
+
+        return back();
     }
 
     public function delete($id) 

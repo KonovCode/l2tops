@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/main.css') }}">
 
-    <div>
+    <div style="background-image: url('{{$banner && $banner->publish ? $banner->img : 'test'}}')" class="bg-no-repeat bg-center bg-cover">
 
         <x-header></x-header>
 
