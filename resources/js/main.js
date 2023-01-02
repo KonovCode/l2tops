@@ -1,24 +1,24 @@
 // burder-header-nav -----------------------------------------------
 
-const burger_header = document.getElementById('burger-header');
+const burgerHeader = document.getElementById('burger-header');
 
-const header_nav = document.getElementById('header_nav');
+const headerNav = document.getElementById('header_nav');
 
-let navState = false;
+let nav = false;
 
-burger_header.addEventListener('click', getNav);
+burgerHeader.addEventListener('click', getNav);
 
 function getNav() {
-    navState = !navState;
+    nav = !nav;
 
-    if(navState) {
-        header_nav.classList.remove('-translate-y-80');
-        header_nav.classList.remove('hidden');
-        header_nav.classList.add('translate-y-80');
+    if(nav) {
+        headerNav.classList.remove('-translate-y-80');
+        headerNav.classList.remove('hidden');
+        headerNav.classList.add('translate-y-80');
     } else {
-        header_nav.classList.remove('translate-y-80');
-        header_nav.classList.add('-translate-y-80');
-        header_nav.classList.add('hidden');
+        headerNav.classList.remove('translate-y-80');
+        headerNav.classList.add('-translate-y-80');
+        headerNav.classList.add('hidden');
     }
 }
 

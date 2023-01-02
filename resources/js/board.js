@@ -1,4 +1,4 @@
-
+document.addEventListener('DOMContentLoaded', () => {
 // check scroll position 
 
 let position = 0;
@@ -35,7 +35,7 @@ function screenPosition(position) {
 
 //-----------------------------------------------------------------
 
-// form add banner script------------------------------------------>
+//form add banner script------------------------------------------>
 
 let cancelFormBtn = document.querySelector('.cancel_form_btn');
 
@@ -59,3 +59,5 @@ btnAddBanner.addEventListener('click', () => {
     formAddBanner.classList.remove('hidden');
 });
 }
+
+});

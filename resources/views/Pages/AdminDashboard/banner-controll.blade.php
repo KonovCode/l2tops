@@ -26,7 +26,7 @@
     @endif
    
     @if($banner)
-      <div style="background-image: url('{{$banner->img}}')" class="bg-no-repeat bg-center bg-contain h-96"></div>
+      <div style="background-image: url('{{asset($banner->img)}}')" class="bg-no-repeat bg-center bg-contain h-96"></div>
     @else
     <div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTeVz_syqEdJ984gBkKveXY1L04XOgim3OvE-I_ijWd4nFmeUfvtZ6Xfk3K-RkQrz2Sg&usqp=CAU')" class="bg-no-repeat bg-center bg-contain h-96"></div>
     @endif

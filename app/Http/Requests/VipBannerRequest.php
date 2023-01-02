@@ -25,7 +25,7 @@ class VipBannerRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:4', 'max:20'],
-            'img' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg', 'max:4096'],
+            'img' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:4096'],
             'link' => ['required', 'string'],
             'buy_term' => ['required', 'integer', 'min:1', 'max:60'],
             'buy_date' => ['required', 'date'],

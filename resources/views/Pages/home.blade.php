@@ -4,9 +4,11 @@
 
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/main.css') }}">
 
-    <div style="background-image: url('{{$banner && $banner->publish ? $banner->img : 'test'}}')" class="bg-no-repeat bg-center bg-cover">
+    <div>
 
         <x-header></x-header>
+
+        <main style="background-image: url('{{$banner && $banner->publish ? $banner->img : 'test'}}'); padding-top: 300px" class="bg-no-repeat bg-top bg-contain">
 
         <x-sort-nav></x-sort-nav>
 
@@ -287,6 +289,8 @@
 
             </section>
         </div>
+
+    </main>
 
         <x-footer></x-footer>
 

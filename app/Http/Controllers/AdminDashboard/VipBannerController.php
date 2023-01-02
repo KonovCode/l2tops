@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminDashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VipBannerRequest;
+use Illuminate\Http\Request;
 use App\Models\VipBanner;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class VipBannerController extends Controller
         return view('Pages.AdminDashboard.banner-controll', ['banner' => $banner]);
     }
 
-    public function add_banner(VipBannerRequest $request) 
+    public function add_banner(Request $request) 
     {
        $imageName = time().'.'.$request->img->extension();
 
@@ -25,7 +26,7 @@ class VipBannerController extends Controller
 
        VipBanner::create([
             'title' => $request->title,
-            'img' => asset(Storage::url('vip-banner/'.$imageName)),
+            'img' => asset(Storage::url('public/vip-banner/'.$imageName)),
             'file_name' => $imageName,
             'link' => $request->link,
             'buy_term' => $request->buy_term,

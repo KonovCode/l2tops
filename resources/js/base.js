@@ -1,22 +1,22 @@
 // nav burger /////////////////////////////////////////////////
 
-const burger_button = document.getElementById('burger-button');
-const mobail_nav = document.querySelector('.mobail-nav');
+const burgerButton = document.getElementById('burger-button');
+const mobailNav = document.querySelector('.mobail-nav');
 
-let nav_state = false;
+let state = false;
 
-burger_button.addEventListener('click', update_state);
+burgerButton.addEventListener('click', update_state);
 
 function update_state() {
 
-    nav_state = !nav_state
+    state = !state
 
-    if(nav_state) {
-        mobail_nav.classList.remove('hidden');
-        burger_button.classList.add('text-blue-500');  
+    if(state) {
+        mobailNav.classList.remove('hidden');
+        burgerButton.classList.add('text-blue-500');  
     } else {
-        mobail_nav.classList.add('hidden');
-        burger_button.classList.remove('text-blue-500');
+        mobailNav.classList.add('hidden');
+        burgerButton.classList.remove('text-blue-500');
     }
 
 }
