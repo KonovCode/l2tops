@@ -2,36 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CheckServicesTerm;
+use App\Http\Requests\ProjectFilterRequest;
+use App\Http\Resources\ProjectResource;
+use App\Http\Filters\ProjectFilter;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\VipBanner;
 use Carbon\Carbon;
+use App\Models\Styles;
 
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index(ProjectFilterRequest $request) {
+
+        event(new CheckServicesTerm());
+
+        $styles = Styles::get()->first();
 
         $banner = VipBanner::get()->first();
 
-        $premium = Project::all()->where('premium', 1);
+        $data = $request->validated();
 
-        $today = Project::all()->where('date_open', Carbon::now()->toDateString());
+        $filter = app()->make(ProjectFilter::class, ['queryParams' => array_filter($data)]);
+        
+        $projects = ProjectResource::collection(Project::filter($filter)->where('state_public', 1)->get());
 
-        $yesterday = Project::all()->where('date_open', Carbon::now()->subDay()->toDateString());
+        $premium_already_open = $projects->where('premium', 1)->where('date_open', '<', Carbon::now()->toDateString())->where('date_open', '>', Carbon::now()->subDays(99));
+        
+        $premium_open_soon = $projects->where('premium', 1)->where('date_open', '>', Carbon::now()->toDateString())->where('date_open', '<', Carbon::now()->addDays(99));
 
-        $nextSevenDays = Project::all()->whereBetween('date_open', [Carbon::now()->addDays(1)->toDateString(), Carbon::now()->addDays(7)->toDateString()]);
+        $today = $projects->where('date_open', Carbon::now()->toDateString());
 
-        $weekAgoAndMore = Project::all()->where('date_open', '<', Carbon::now()->subDays(8)->toDateString())->where('date_open', '>', Carbon::now()->subDays(60));
+        $yesterday = $projects->where('date_open', Carbon::now()->subDay()->toDateString());
 
-        $weekAndMore = Project::all()->whereBetween('date_open', [Carbon::now()->addDays(8)->toDateString(), Carbon::now()->addDays(60)->toDateString()]);
+        $nextSevenDays = $projects->whereBetween('date_open', [Carbon::now()->addDays(1)->toDateString(), Carbon::now()->addDays(7)->toDateString()]);
 
-        $tomorrow = Project::all()->where('date_open', Carbon::now()->addDays(1)->toDateString());
+        $weekAgoAndMore = $projects->where('date_open', '<', Carbon::now()->subDays(8)->toDateString())->where('date_open', '>', Carbon::now()->subDays(60));
 
-        $previousSevenDays = Project::all()->where('date_open', '<', Carbon::now()->subDays(1)->toDateString())->where('date_open', '>=', Carbon::now()->subDays(8));
+        $weekAndMore = $projects->whereBetween('date_open', [Carbon::now()->addDays(8)->toDateString(), Carbon::now()->addDays(60)->toDateString()]);
 
-        return view('Pages.home', [
+        $tomorrow = $projects->where('date_open', Carbon::now()->addDays(1)->toDateString());
+
+        $previousSevenDays = $projects->where('date_open', '<', Carbon::now()->subDays(1)->toDateString())->where('date_open', '>=', Carbon::now()->subDays(8));
+
+        return view('Pages.Home.home', [
+            'projects' => $projects,
             'banner' => $banner,
-            'premium' => $premium,
+            'premium_already_open' => $premium_already_open,
+            'premium_open_soon' => $premium_open_soon,
             'today' => $today,
             'yesterday' => $yesterday,
             'nextSevenDays' => $nextSevenDays,
@@ -39,6 +59,36 @@ class HomeController extends Controller
             'tomorrow' => $tomorrow,
             'previousSevenDays' => $previousSevenDays,
             'weekAndMore' => $weekAndMore,
+            'styles' => $styles,
         ]);
+    }
+
+    public function aboutIndex() 
+    {
+        $styles = Styles::get()->first();
+
+        $banner = VipBanner::get()->first();
+
+        return view('Pages.Home.about', ['styles' => $styles, 'banner' => $banner]);
+    } 
+
+    public function contactIndex() 
+    {
+        $styles = Styles::get()->first();
+
+        $banner = VipBanner::get()->first();
+
+        return view('Pages.Home.contact', ['styles' => $styles, 'banner' => $banner]);
+    }
+
+    public function reclameIndex() 
+    {
+        $styles = Styles::get()->first();
+
+        $banner = VipBanner::get()->first();
+
+        $services = Service::all();
+
+        return view('Pages.Home.reclame', ['styles' => $styles, 'banner' => $banner, 'services' => $services]);
     }
 }

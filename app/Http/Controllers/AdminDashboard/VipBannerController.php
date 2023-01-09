@@ -18,7 +18,7 @@ class VipBannerController extends Controller
         return view('Pages.AdminDashboard.banner-controll', ['banner' => $banner]);
     }
 
-    public function add_banner(Request $request) 
+    public function add_banner(VipBannerRequest $request) 
     {
        $imageName = time().'.'.$request->img->extension();
 

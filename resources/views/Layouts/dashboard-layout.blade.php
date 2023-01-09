@@ -1,6 +1,6 @@
 <div class="flex justify-between py-4 border-b border-gray-700 bg-gray-200 items-center" style="max-height: 70px">
 
-   <img src="{{asset('storage/l2tops.fun.png')}}" alt="" class="w-20 h-6 md:w-32 md:h-10">
+   <img src="{{asset('storage/l2tops.net-logo.png')}}" alt="" class="w-20 h-6 md:w-32 md:h-10">
    
 
    <!-- Desktop navbar -->
@@ -10,7 +10,6 @@
       <x-nav-link route="add.project" active="{{Route::currentRouteName()}}">Добавить</x-nav-link>
       <x-nav-link route="banners.index" active="{{Route::currentRouteName()}}">Баннеры</x-nav-link>
       <x-nav-link route="projects.index" active="{{Route::currentRouteName()}}">Проекты</x-nav-link>
-      <x-nav-link route="users.index" active="{{Route::currentRouteName()}}">Пользователи</x-nav-link>
       <x-nav-link route="prices.index" active="{{Route::currentRouteName()}}">Цены</x-nav-link>
 
    </nav>
@@ -35,7 +34,6 @@
          <x-nav-link route="add.project" active="{{Route::currentRouteName()}}">Добавить</x-nav-link>
          <x-nav-link route="banners.index" active="{{Route::currentRouteName()}}">Баннеры</x-nav-link>
          <x-nav-link route="projects.index" active="{{Route::currentRouteName()}}">Проекты</x-nav-link>
-         <x-nav-link route="users.index" active="{{Route::currentRouteName()}}">Пользователи</x-nav-link>
          <x-nav-link route="prices.index" active="{{Route::currentRouteName()}}">Цены</x-nav-link>
       </nav>
 </div>

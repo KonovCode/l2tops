@@ -1,7 +1,7 @@
-<section class="w-full lg:w-6/12 my-1" style="min-width: 310px">
-    <div class="w-full sm:w-11/12 bg-gray-700 rounded-xl py-0.5 mt-3 mx-auto">
+<section class="w-full  my-1 px-0.5" style="min-width: 310px">
+    <div class="w-full bg-gray-700 rounded-xl py-0.5 mt-3 mx-auto">
         <div class="flex py-1 justify-between items-center">
-            <div class="flex">
+            <div class="flex items-center">
                 
                 @if($icon === 'rocket')
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -19,12 +19,12 @@
                 </svg>
                 @endif
                 
-                <h2 class="text-yellow-500 font-bold">
+                <h2 class="text-yellow-500 font-semibold md:font-bold text-xs md:text-sm">
                     {{$name}}
                 </h2>
             </div>
             <div v-if="premium === 1"
-                class="flex justify-between items-center bg-gradient-to-br from-pink-500 to-orange-400 font-bold text-white rounded-lg text-xs px-3 py-0.5 animate-pulse mx-3 text-center">
+                class="flex justify-between items-center bg-gradient-to-br from-pink-500 to-orange-400 font-semibold md:font-bold text-white rounded-lg text-xs px-1.5 md:px-3 py-0.5 animate-pulse mx-3 text-center">
                 ПРЕМИУМ СЕРВЕРА
             </div>
         </div>

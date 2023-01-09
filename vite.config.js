@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/base.js', 
                 'resources/js/main.js', 
                 'resources/js/board.js',
+                'resources/js/add-project.js',
                 'resources/css/alert.css',
                 'resources/css/main.css',
             ],

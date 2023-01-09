@@ -33,7 +33,6 @@
             
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border bg-gray-100">
                 <h3 class="pt-4 mb-1 text-2xl text-center font-semibold">Добавить проект</h3>
-                <p class="text-xs font-bold text-end mx-1 text-blue-600">Доступно {{8 - $premiumCount}} premium из 8</p>                
 
                 <form action="{{route('save.project')}}" method="POST" class="px-2 md:px-8 pt-2 md:pt-6 mt-2 pb-1 md:pb-4 mb-4 bg-white rounded flex-col">
                     <div class="mb-4 md:flex md:justify-between">
@@ -61,9 +60,21 @@
                             Хроники
                         </label>
                         <select name="chronicles" class="border w-full border-gray-300 rounded-full text-sm md:text-md h-6 py-0 md:h-10 pl-5 pr-10 text-gray-700 hover:border-gray-400 focus:outline-none appearance-none">
-                            <option value="Interlude">Interlude</option>
-                            <option value="Gracia">Gracia</option>
-                            <option value="Interlude+">Interlude+</option>
+                            <option value="interlude">Interlude</option>
+                                    <option value="high five">High Five</option>
+                                    <option value="interlude+">Interlude+</option>
+                                    <option value="essence">Essence</option>
+                                    <option value="epilogue">Epilogue</option>
+                                    <option value="god">GoD</option>
+                                    <option value="freya">Freya</option>
+                                    <option value="classic">Classic</option>
+                                    <option value="lindvior">Lindvior</option>
+                                    <option value="gracia">Gracia</option>
+                                    <option value="orfen">Orfen</option>
+                                    <option value="helios">Helios</option>
+                                    <option value="fafurion">Fafurion</option>
+                                    <option value="etheia">Etheia</option>
+                                    <option value="odyssey">Gracia</option>
                         </select>
 
                     </div>

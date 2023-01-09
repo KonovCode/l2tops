@@ -44,6 +44,7 @@ class ProjectRequest extends FormRequest
         $this->merge([
             'status_term' => ($this->status !== 'default' ? Carbon::now()->addDays(30)->toDateString() : null),
             'premium_term' => ($this->premium !== '1' ? null : Carbon::now()->addDays(30)->toDateString()),
+            'user_id' => $this->user_id ? $this->user_id : 1,
         ]);
     }
 
@@ -63,12 +64,13 @@ class ProjectRequest extends FormRequest
 
             'rates.required' => 'Поле "Рейты" - обязательное для заполнения',
             'rates.string' => 'Поле "Рейты" - принимает только GVE RvR и числа от 0.1 до 9 999 999',
+            'rates.max' => 'Поле "Рейты" - вы привысели максимальное значение!',
 
             'date_open.required' => 'Укажите дату открытия!',
             'date_open.date' => 'Ошибка неверная дата!',
 
             'website.required' => 'Поле "Ссылка на сайт" - обязательное для заполнения',
-            'website.string' => 'Поле "Ссылка на сайт" - недопустимое значение. Пример ввода - "https://l2high.top"',
+            'website.string' => 'Поле "Ссылка на сайт" - недопустимое значение. Пример ввода - "https://l2tops.net"',
             'website.min' => 'Поле "Ссылка на сайт" - Минимальное количество символов 4',
             'website.max' => 'Поле "Ссылка на сайт" - Максимальное количество символов 99',
             'website.unique' => 'Проект с таким адрес уже существует',

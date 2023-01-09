@@ -20,14 +20,15 @@
 }
 
 .vip {
-    color: rgb(200, 147, 1);
-    background-color: antiquewhite;
+    color: rgb(199, 159, 0);
+    background-color: rgb(249, 227, 200) !important;
     font-weight: bold;
     min-height: 40px !important;
+    border: 1px solid rgb(191, 191, 0);
 }
 
 .vip span {
-    background: rgb(225, 191, 0);
+    background: rgb(246, 210, 3);
     color: white;
     min-width: 40px !important;
 }
@@ -38,6 +39,7 @@
     animation: flame 3s linear 1s infinite running;
     font-weight: bold;
     min-height: 40px !important;
+    color: rgb(83, 141, 250) !important;
 }
 
 .premium span {
@@ -51,10 +53,35 @@
 
 .default {
     border: 1px solid grey;
+    color: rgb(92, 92, 92);
 }
 
 @media screen and (max-width: 400px){
     .project_params {
-        font-size: 9px !important;
+        font-size: 10px !important;
     }
+}
+
+#main {
+  width: 100%;
+  height: auto;
+  flex-grow: 2;
+}
+
+#header {
+  width: 100%;
+  height: auto;
+  flex-grow: 0;
+}
+
+#footer {
+    flex-grow: 0;
+    width: 100%;
+    height: auto;
+}
+
+#sort_nav {
+    flex-grow: 0;
+    width: 100%;
+    height: auto;
 }

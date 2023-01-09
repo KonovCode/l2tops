@@ -8,15 +8,17 @@ class ProjectItem extends Component
 {
     public $status;
     public $premium;
+    public $link;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($status, $premium)
+    public function __construct($status, $premium, $link)
     {
         $this->status = $status;
         $this->premium = ($premium === '1' ? 'premium' : '');
+        $this->link = $link;
     }
 
     /**

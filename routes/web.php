@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddProjectController;
 use App\Http\Controllers\AdminDashboard\AdminAddProjectController;
 use App\Http\Controllers\AdminDashboard\AdminPriceController;
 use App\Http\Controllers\AdminDashboard\AdminProjectsController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\AdminDashboard\VipBannerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogotypeController;
 use Illuminate\Support\Facades\Route;
 //---------------------------------------------------------
 // auth + email verify routes
@@ -33,8 +35,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['can:admin' ,'auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/add-gradient', [DashboardController::class, 'addGradient'])->name('add.gradient');
+    Route::post('/delete-gradient/{id}', [DashboardController::class, 'deleteGradient'])->name('delete.gradient');
     Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
     Route::get('/add-project', [AdminAddProjectController::class, 'index'])->name('add.project');
     
@@ -46,14 +50,30 @@ Route::middleware('auth')->group(function () {
     Route::post('/add-publish-banner/{id}', [VipBannerController::class, 'addPublish'])->name('add.publish.banner');
     Route::post('/hide-publish-banner/{id}', [VipBannerController::class, 'hidePublish'])->name('hide.publish.banner');
     
-    Route::resource('projects', AdminProjectsController::class);
-    Route::resource('users', AdminUsersController::class);
-    Route::resource('prices', AdminPriceController::class);
+    Route::get('/projects-all', [AdminProjectsController::class, 'index'])->name('projects.index');
+    Route::post('/update-status/{id}', [AdminProjectsController::class, 'updateStatus'])->name('update.status');
+    Route::post('/add-publish-project/{id}', [AdminProjectsController::class, 'publishProject'])->name('add.publish.project');
+    Route::post('/hide-project/{id}', [AdminProjectsController::class, 'hideProject'])->name('hide.ptoject');
+    Route::post('/delete-project/{id}', [AdminProjectsController::class, 'delete'])->name('delete.project');
+
+    Route::get('/prices-controll', [AdminPriceController::class, 'index'])->name('prices.index');
+
+    Route::post('/price-update/{id}', [AdminPriceController::class, 'updatePrice'])->name('price.update');
 
 });
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/add-project-l2tops', [AddProjectController::class, 'index'])->name('add.project.home');
+
+Route::get('/about-l2tops', [HomeController::class, 'aboutIndex'])->name('about.index');
+
+Route::get('/contact-l2tops', [HomeController::class, 'contactIndex'])->name('contact.index');
+
+Route::get('/reclame-l2tops', [HomeController::class, 'reclameIndex'])->name('reclame.index');
+
+Route::post('/add-new-project', [AddProjectController::class, 'addProject'])->name('add.new.project');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 

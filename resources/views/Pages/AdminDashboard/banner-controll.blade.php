@@ -28,8 +28,9 @@
     @if($banner)
       <div style="background-image: url('{{asset($banner->img)}}')" class="bg-no-repeat bg-center bg-contain h-96"></div>
     @else
-    <div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTeVz_syqEdJ984gBkKveXY1L04XOgim3OvE-I_ijWd4nFmeUfvtZ6Xfk3K-RkQrz2Sg&usqp=CAU')" class="bg-no-repeat bg-center bg-contain h-96"></div>
+      <div style="background-image: url('{{asset('storage/l2tops.net-banner.jpg')}}')" class="bg-no-repeat bg-center bg-contain h-96"></div>
     @endif
+
     <hr class="my-3">
 
    <section class="btns_block_controll mx-auto w-8/12 lg:w-4/12 flex justify-between my-5">
@@ -44,7 +45,7 @@
          @if(!$banner->publish) 
          <form action="{{route('add.publish.banner', $banner->id)}}" method="post" class="mx-auto">
             @csrf
-            <x-button class="border-green-600 hover:bg-green-600 text-green-600">Опубликавать</x-button>
+            <x-button class="border-green-600 hover:bg-green-600 text-green-600">Опубликовать</x-button>
          </form>
          @else 
          <form action="{{route('hide.publish.banner', $banner->id)}}" method="post" class="mx-auto">
@@ -72,6 +73,7 @@
             Добавить изображение
             <input type="file" name="img" id="banner_file" class="hidden">
          </label>
+         
         
          <label for="buy_term" class="flex items-center text-sm md:text-lg bg-gray-400 rounded py-0.5 px-2 mt-1">
             Срок действия
@@ -85,6 +87,7 @@
          <input type="hidden" name="buy_date" value="{{\Carbon\Carbon::now()->toDateString()}}">
          
       </section>
+     
 
       <section class="mt-5 md:w-full flex justify-around">
 

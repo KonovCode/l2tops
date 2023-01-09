@@ -13,8 +13,7 @@ class AdminAddProjectController extends Controller
 {
     public function index() 
     {
-        $premiumCount = count(Project::all()->where('premium', 1));
-        return view('Pages.AdminDashboard.add-project', ['premiumCount' => $premiumCount]);
+        return view('Pages.AdminDashboard.add-project');
     }
 
     public function addProject(ProjectRequest $request) 

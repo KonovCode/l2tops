@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class VipBannerRequest extends FormRequest
 {
@@ -13,8 +14,14 @@ class VipBannerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
-    }
+        $response = Gate::inspect('admin');
+
+        if ($response->allowed()) {
+            return true;
+        } else {
+            return $response->message();
+        }
+     }
 
     /**
      * Get the validation rules that apply to the request.
@@ -25,7 +32,7 @@ class VipBannerRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:4', 'max:20'],
-            'img' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:4096'],
+            'img' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:10000'],
             'link' => ['required', 'string'],
             'buy_term' => ['required', 'integer', 'min:1', 'max:60'],
             'buy_date' => ['required', 'date'],
